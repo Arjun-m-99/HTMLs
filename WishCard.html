@@ -1,0 +1,144 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Card</title>
+
+
+</head>
+
+<body>
+    <div id="card" class="card">
+        <p><span id="yes-u-r"> </span></p>
+    </div>
+
+
+    <style>
+        html {
+            user-select: none;
+        }
+
+        @property --rotate {
+            syntax: "<angle>";
+            initial-value: 132deg;
+            inherits: false;
+        }
+
+        :root {
+            --card-height: 65vh;
+            --card-width: calc(var(--card-height) / 1.5);
+        }
+
+
+        body {
+            min-height: 100vh;
+            background: #212534;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            box-sizing: border-box;
+        }
+
+
+        .card {
+            margin: 5%;
+            background: #191c29;
+            width: 94%;
+            height: 90%;
+            padding: 3px;
+            position: relative;
+            border-radius: 6px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            display: flex;
+            font-size: 1.5em;
+            color: rgb(88 199 250 / 0%);
+            /* cursor: pointer; */
+            font-family: cursive;
+        }
+
+        .card:hover {
+            color: rgb(88 199 250 / 100%);
+            transition: color 1s;
+        }
+
+        .card:hover:before,
+        .card:hover:after {
+            animation: infinite;
+            opacity: 0;
+        }
+
+
+        .card::before {
+            content: "";
+            width: 104%;
+            height: 102%;
+            border-radius: 8px;
+            background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+            position: absolute;
+            z-index: -1;
+            top: -1%;
+            left: -2%;
+            animation: spin 2.5s linear infinite;
+        }
+
+        .card::after {
+            position: absolute;
+            content: "";
+            top: calc(var(--card-height) / 6);
+            left: 0;
+            right: 0;
+            z-index: -1;
+            height: 100%;
+            width: 100%;
+            margin: 0 auto;
+            transform: scale(0.8);
+            filter: blur(calc(var(--card-height) / 6));
+            background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+            opacity: 1;
+            transition: opacity .5s;
+            animation: spin 2.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                --rotate: 0deg;
+            }
+
+            100% {
+                --rotate: 360deg;
+            }
+        }
+
+        a {
+            color: #212534;
+            text-decoration: none;
+            font-family: sans-serif;
+            font-weight: bold;
+            margin-top: 2rem;
+        }
+    </style>
+
+    <script>
+        document.getElementById("card").onmouseenter = document.getElementById("card").onclick = function () { yesYouAre() };
+        function yesYouAre() {
+
+            var item = ['Hey Yar... u know what...</br> U r the best &#128525;ne re!</br><span style="font-size:100px;">&#128149;</span>',
+                'yaarrr.... U r cool... </br><span style="font-size:100px;">&#128526;</span>',
+                ' Keep smiling yar...</br><span style="font-size:150px;">☺</span><br>(always)</br>&infin;',
+                'Yes yar... You are special... &#9825;</br><span style="font-size:100px;">&#127808;</span>',]
+                .find((_, i, ar) => Math.random() < 1 / (ar.length - i));
+            document.getElementById('yes-u-r').innerHTML = item;
+
+        }
+
+    </script>
+
+</body>
+
+</html>

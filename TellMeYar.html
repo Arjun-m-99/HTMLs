@@ -1,0 +1,150 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tell me</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <div class="Body-box">
+        <p style="padding: 0px;" id="qn">Wanna tell me a secret????</p>
+        <button class="btn glyphicon glyphicon-thumbs-up" id="yes" title="Yes yar"></button>
+        <button id="no" class="btn glyphicon glyphicon-remove" onmouseover="runaway(this)" title="Not working😜"></button> <br> <br>
+        <input id="my_field" class="submit" type="text" placeholder="Good kiddo... now share with me re...">
+        <button id="Submit" onclick="send()" class="submit btn glyphicon glyphicon-send" title="Wanna tell this"></button>
+    </div>
+    <div id="msg">
+        Oops.. U miss tht... tell me re...
+    </div>
+    <style>
+        ::placeholder {
+            color: purple;
+            /* opacity: 1; */
+        }
+
+        .Red::placeholder {
+            color: red;
+            /* Modern browsers */
+        }
+
+        #div {
+            width: 20%;
+        }
+
+        #my_field {
+            width: 80%;
+            margin-bottom: 2%;
+            color: black;
+        }
+
+        body {
+            background: #a2efea;
+            color: white;
+            background-image: url("https://www.citypng.com/public/uploads/preview/hd-purple-neon-light-line-png-316285114409xxkjybzd8.png");
+            background-image: url("https://wallpapers-clan.com/wp-content/uploads/2021/03/purple-neon-app-icons-pack-preview-2.jpg");
+            background-image: url("https://wallpaper.dog/large/992466.png");
+            background-image: url("http://31.media.tumblr.com/4d3ed6d0047013c2f672f95c03401c01/tumblr_mgwghbJvd81rr86mho1_500.gif");
+            /* background-position: 50% 88%; */
+            background-size: 100% 100%;
+            background-repeat:no-repeat;
+        }
+        
+        div,.body-box {
+            min-width: 35%;
+            max-width: 75%;
+            height: fit-content;
+            position: absolute;
+            margin: auto;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            /* background: rgb(28, 87, 91); */
+            text-align: center;
+
+        }
+
+        .body-box{
+            background-image: url("https://www.citypng.com/public/uploads/preview/hd-purple-neon-light-line-png-316285114409xxkjybzd8.png");
+            
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9ufe1Uy9gENhMaNJTY-82zOHtBdrhNMUokn7sRxfKmNK3TKilARgpj0g374g_io1UE04&usqp=CAU");
+            background-image: url("https://i.pinimg.com/564x/96/e0/42/96e04213ca830f66c266f76713ee8199.jpg");
+            background-image: none;
+            background-image: url("https://imageio.forbes.com/specials-images/imageserve/5e18c5dcf336c60006e5512c/Neon-sign-reading--Wish-you-were-here-/960x0.jpg?format=jpg&width=960");
+            background-image: url("https://i.etsystatic.com/18511388/r/il/f75a53/3524198761/il_570xN.3524198761_gvtd.jpg");
+            background-size: 70% 100%;
+            background-position: 58% 88%;
+            background-repeat:no-repeat;
+        }
+
+        button {
+            color: white;
+            background: #000;
+            border: none;
+
+        }
+
+        #no {
+            position: relative;
+        }
+    </style>
+
+    <script>
+        function yesYouAre(){
+            var item = ["Oops.. U miss tht kiddo...","Aumm.. tell me re...","Fell free yar","I'm always here for u yar",
+                        "Good kiddo kadha... cheppu re","Don't carry it yar... share with me"]
+            .find((_, i, ar) => Math.random() < 1 / (ar.length - i));
+            document.getElementById('msg').innerHTML = item;
+        }
+        $(document).ready(function () {
+            $(".submit").hide();
+            $("#msg").hide();
+            $("#yes").click(function () {
+                $(".submit").show();
+            });
+        });
+        function runaway(id) {
+            yesYouAre();
+            $(".submit").hide();
+            id.style.top = Math.round(Math.random() * 250) - 100 + 'px';
+            id.style.left = Math.round(Math.random() * 250) - 200 + 'px';
+            $("#msg").fadeIn(200);
+            $("#msg").fadeOut(800);
+
+        }
+        $('#my_field,#yes').
+            on('focus', function () {
+                $('#qn').hide();
+                $('#yes').hide();
+                $('#no').hide();
+                $('#move').hide();
+                $(".submit").show();
+            });
+        function send() {
+            var msg = encodeURIComponent((document.getElementById('my_field').value).trim());
+            // console.log(msg.length)
+            if (msg.length) {
+                msg = "http://Wa.me/+917989202940?text=" + msg;
+                console.log(msg)
+                window.open(msg, "_self");
+            } else {
+                navigator.vibrate(230);
+                $('#my_field').attr('placeholder',
+                    "Yar... ur cheating 😒!! U've to tell me...😗");
+                $('input[type=text]').each(function () {
+                    if (!$(this).val()) {
+                        $(this)[0].className += " Red";
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
